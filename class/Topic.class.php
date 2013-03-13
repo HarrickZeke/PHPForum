@@ -62,6 +62,7 @@ class Topic
 	{
 		return $this->_description;
 	}
+
 }
 
 ?>

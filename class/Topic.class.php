@@ -10,13 +10,22 @@ class Topic
 	private $_author_id;
 	private $_order;
 
-	public function __construct($id, $name, $description, $author_id, $order)
+	public function __construct(array $data) 
 	{
-		$this->setId($id);
-		$this->setName($name);
-		$this->setDescription($description);
-		$this->setAuthorId($author_id);		
-		$this->setOrder($order);
+		$this->hydrate($data);
+	}
+
+	public function hydrate(array $data)
+	{
+	  	foreach ($data as $key => $value)
+	  	{
+		    $method = 'set'.ucfirst($key);
+	        
+	        if (method_exists($this, $method))
+		    {
+		      	$this->$method($value);
+	    	}
+	  	}
 	}
 
 	public function setId($id)

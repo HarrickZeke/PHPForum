@@ -10,20 +10,29 @@ class Post
 	private $_author_id;
 	private $_order;
 
-	public function __construct($id, $body, $datetime, $author_id, $order)
+	public function __construct(array $data)
 	{
-		$this->setId($id);
-		$this->setBody($body);
-		$this->setDatetime($datetime);
-		$this->setAuthorId($author_id);		
-		$this->setOrder($order);
+		$this->hydrate($data);
+	}
+
+	public function hydrate(array $data)
+	{
+	  	foreach ($data as $key => $value)
+	  	{
+		    $method = 'set'.ucfirst($key);
+	        
+	        if (method_exists($this, $method))
+		    {
+		      	$this->$method($value);
+	    	}
+	  	}
 	}
 
 	public function setId($id)
 	{
 		if(!is_int($id))
 		{
-			trigger_error("Id must be an int");
+			trigger_error("Id must be an integer");
 			return;
 		}
 

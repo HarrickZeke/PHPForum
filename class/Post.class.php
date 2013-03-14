@@ -2,19 +2,19 @@
 /**
 * 
 */
-class Topic
+class Post
 {
 	private $_id;
-	private $_name;
-	private $_description;
+	private $_body;
+	private $_datetime;
 	private $_author_id;
 	private $_order;
 
-	public function __construct($id, $name, $description, $author_id, $order)
+	public function __construct($id, $body, $datetime, $author_id, $order)
 	{
 		$this->setId($id);
-		$this->setName($name);
-		$this->setDescription($description);
+		$this->setBody($body);
+		$this->setDatetime($datetime);
 		$this->setAuthorId($author_id);		
 		$this->setOrder($order);
 	}
@@ -23,33 +23,22 @@ class Topic
 	{
 		if(!is_int($id))
 		{
-			trigger_error("Id must be an integer");
+			trigger_error("Id must be an int");
 			return;
 		}
 
 		$this->_id = $id;
 	}
 
-	public function setName($name)
+	public function setBody($body)
 	{
-		if(!is_string($name))
+		if(!is_string($body))
 		{
-			trigger_error("Name must be a string");
+			trigger_error("Body must be a string");
 			return;
 		}
 
-		$this->_name = $name;
-	}
-
-	public function setDescription($description)
-	{
-		if(!is_string($description))
-		{
-			trigger_error("Description must be a string");
-			return;
-		}
-
-		$this->_description = $description;
+		$this->_body = $body;
 	}
 
 	public function setAuthorId($author_id)
@@ -61,6 +50,12 @@ class Topic
 		}
 
 		$this->_author_id = $author_id;
+	}
+
+	public function setDatetime($datetime)
+	{
+		//TODO : check datetime
+		$this->_datetime = $datetime;
 	}
 
 	public function setOrder($order)
@@ -78,15 +73,15 @@ class Topic
 	{
 		return $this->_id;
 	}
-
-	public function name()
+	
+	public function body()
 	{
-		return $this->_name;
+		return $this->_body;
 	}
 
-	public function description()
+	public function datetime()
 	{
-		return $this->_description;
+		return $this->_datetime;
 	}
 
 	public function author_id()
@@ -99,5 +94,3 @@ class Topic
 		return $this->_order;
 	}
 }
-
-?>

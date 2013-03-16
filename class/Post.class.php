@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
 * 
 */
@@ -7,8 +7,8 @@ class Post
 	private $_id;
 	private $_body;
 	private $_datetime;
-	private $_author_id;
-	private $_order;
+	private $_authorId;
+	private $_orderId;
 
 	public function __construct(array $data)
 	{
@@ -50,15 +50,15 @@ class Post
 		$this->_body = $body;
 	}
 
-	public function setAuthorId($author_id)
+	public function setAuthorId($authorId)
 	{
-		if(!is_int($author_id))
+		if(!is_int($authorId))
 		{
 			trigger_error("Author id must be an integer");
 			return;
 		}
 
-		$this->_author_id = $author_id;
+		$this->_authorId = $authorId;
 	}
 
 	public function setDatetime($datetime)
@@ -67,15 +67,15 @@ class Post
 		$this->_datetime = $datetime;
 	}
 
-	public function setOrder($order)
+	public function setOrderId($orderId)
 	{
-		if(!is_int($order))
+		if(!is_int($orderId))
 		{
 			trigger_error("Order must be an integer");
 			return;
 		}
 
-		$this->_order = $order;
+		$this->_orderId = $orderId;
 	}
 
 	public function id()
@@ -93,13 +93,13 @@ class Post
 		return $this->_datetime;
 	}
 
-	public function author_id()
+	public function authorId()
 	{
-		return $this->_author_id;
+		return $this->_authorId;
 	}
 
-	public function order()
+	public function orderId()
 	{
-		return $this->_order;
+		return $this->_orderId;
 	}
 }

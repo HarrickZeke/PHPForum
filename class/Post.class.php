@@ -7,6 +7,7 @@ class Post
 	private $_id;
 	private $_body;
 	private $_datetime;
+	private $_topicId;
 	private $_authorId;
 	private $_orderId;
 
@@ -30,6 +31,8 @@ class Post
 
 	public function setId($id)
 	{
+		$id = (int) $id;
+
 		if(!is_int($id))
 		{
 			trigger_error("Id must be an integer");
@@ -50,8 +53,23 @@ class Post
 		$this->_body = $body;
 	}
 
+	public function setTopicId($topicId)
+	{
+		$topicId = (int) $topicId;
+
+		if(!is_int($topicId))
+		{
+			trigger_error("Author id must be an integer");
+			return;
+		}
+
+		$this->_topicId = $topicId;
+	}
+
 	public function setAuthorId($authorId)
 	{
+		$authorId = (int) $authorId;
+
 		if(!is_int($authorId))
 		{
 			trigger_error("Author id must be an integer");
@@ -69,6 +87,8 @@ class Post
 
 	public function setOrderId($orderId)
 	{
+		$orderId = (int) $orderId;
+
 		if(!is_int($orderId))
 		{
 			trigger_error("Order must be an integer");
@@ -91,6 +111,11 @@ class Post
 	public function datetime()
 	{
 		return $this->_datetime;
+	}
+
+	public function topicId()
+	{
+		return $this->_topicId;
 	}
 
 	public function authorId()

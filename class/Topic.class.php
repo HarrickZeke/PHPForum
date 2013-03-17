@@ -30,6 +30,8 @@ class Topic
 
 	public function setId($id)
 	{
+		$id = (int) $id;
+
 		if(!is_int($id))
 		{
 			trigger_error("Id must be an integer");
@@ -63,6 +65,8 @@ class Topic
 
 	public function setAuthorId($authorId)
 	{
+		$authorId = (int) $authorId;
+
 		if(!is_int($authorId))
 		{
 			trigger_error("Author id must be an integer");
@@ -74,6 +78,8 @@ class Topic
 
 	public function setOrderId($orderId)
 	{
+		$orderId = (int) $orderId;
+		
 		if(!is_int($orderId))
 		{
 			trigger_error("Order id must be an integer");

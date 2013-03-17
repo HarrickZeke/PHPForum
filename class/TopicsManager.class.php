@@ -34,9 +34,9 @@ class TopicsManager
 	public function read($id)
 	{
 		$id = (int) $id;
-		$query = $this->_database->query('SELECT id, name, description, authorId, orderId
-									FROM topic
-									WHERE id = '.$id);
+		$query = $this->_database->query('SELECT *
+										  FROM topic
+										  WHERE id = '.$id);
 		
 		$data = $query->fetch(PDO::FETCH_ASSOC);
 		return new Topic($data);
@@ -45,9 +45,9 @@ class TopicsManager
 	public function readAll()
 	{
 		$topics = array();
-		$query = $this ->_database->query('SELECT id, name, description, authorId, orderId
-									 FROM topic
-									 ORDER BY orderId');	
+		$query = $this ->_database->query('SELECT *
+									 	   FROM topic
+									 	   ORDER BY orderId');	
 		
 		while ($data = $query->fetch(PDO::FETCH_ASSOC)) 
 		{
@@ -59,11 +59,11 @@ class TopicsManager
 	public function update(Topic $topic)
 	{
 		$query = $this->_database->prepare('UPDATE topic
-									  SET name = :name, 
-									  	  description = :description, 
-									  	  authorId = :authorId, 
-									  	  orderId = :orderId
-									  WHERE :id = id');
+											SET name = :name, 
+												description = :description, 
+											  	authorId = :authorId, 
+											  	orderId = :orderId
+											WHERE :id = id');
 
 		$query->bindValue(':name', $topic->name(), PDO::PARAM_STR);
 		$query->bindValue(':description', $topic->description(), PDO::PARAM_STR);
@@ -76,7 +76,7 @@ class TopicsManager
 	public function delete(Topic $topic)
 	{
 		$this->_database->exec('DELETE FROM topic
-						  WHERE id = '.$topic->id().'
-						  LIMIT 1');
+						  		WHERE id = '.$topic->id().'
+						  		LIMIT 1');
 	}
 }

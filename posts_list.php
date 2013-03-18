@@ -26,6 +26,7 @@
 		
 	 	$manager_topic = new TopicsManager($db);
 		$topic = $manager_topic->read($post_id);
+		$manager_post = new PostsManager($db);
 
 		?>
 		<div class="row">
@@ -39,10 +40,9 @@
 					<li><a href="">Share</a></li>
 				</ul>
 			
-				<h6>x Comments</h6>
+				<h6><?php echo $manager_post->postsCount($topic->id()); ?> Comments</h6>
 
 				<?php
-				$manager_post = new PostsManager($db);
 				$post_list = $manager_post->readAll($post_id);
 				$numItems = count($post_list);
 				$i = 0;

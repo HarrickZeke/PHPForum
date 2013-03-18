@@ -33,19 +33,8 @@
 				<li class="has-dropdown">
 					<a href="#">Main Item 1</a>
 					<ul class="dropdown">
-						<li><label>Section Name</label></li>
-						<li class="has-dropdown">
-							<a href="#" class="">Has Dropdown, Level 1</a>
-							<ul class="dropdown">
-								<li><a href="#">Dropdown Options</a></li>
-								<li><a href="#">Dropdown Options</a></li>
-								<li><a href="#">Level 2</a></li>
-								<li><a href="#">Subdropdown Option</a></li>
-								<li><a href="#">Subdropdown Option</a></li>
-								<li><a href="#">Subdropdown Option</a></li>
-							</ul>
-						</li>
-						<li><a href="#">Dropdown Option</a></li>
+						<li><label>Forum</label></li>
+						<li><a href="topics_list.php">Topics list</a></li>
 						<li><a href="#">Dropdown Option</a></li>
 						<li class="divider"></li>
 						<li><label>Section Name</label></li>

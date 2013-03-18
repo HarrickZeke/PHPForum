@@ -83,4 +83,15 @@ class PostsManager
 						  		WHERE id = '.$post->id().'
 						  		LIMIT 1');
 	}
+
+	public function postsCount($id)
+	{
+		$id = (int) $id;
+		$query = $this->_database->query('SELECT COUNT(*)
+										  FROM post
+										  WHERE topicId = '.$id);
+
+		$data = $query->fetchColumn();
+		return $data;
+	}
 }

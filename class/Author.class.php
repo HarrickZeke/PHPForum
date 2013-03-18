@@ -6,9 +6,9 @@
 	{
 		private $_id;
 		private $_name;
-		private $_mail;
+		private $_email;
 		private $_password;
-		private $_sexe;
+		private $_gender;
 		private $_dateOfBirth;
 
 		function __construct(argument)
@@ -53,15 +53,77 @@
 			$this->_name = $name;
 		}
 
-		public function setMail($mail)
+		public function setEmail($email)
 		{
-			if(!is_string($mail))
+			if(!is_string($email))
 			{
-				trigger_error("Mail must be a string");
+				trigger_error("Email must be a string");
 				return;
 			}
 
-			$this->_mail = $mail;
+			$this->_email = $email;
+		}
+
+		public function setPassword($password)
+		{
+			if(!is_string($password))
+			{
+				trigger_error("Password must be a string");
+				return;
+			}
+
+			$this->_password = $password;
 		}
 		
+		public function setGender($gender)
+		{
+			if(!is_string($gender))
+			{
+				trigger_error("Gender must be a string");
+				return;
+			}
+
+			$this->_sexe = $sexe;
+		}
+
+		public function setDateOfBirth($dateOfBirth)
+		{
+			if(!is_string($dateOfBirth))
+			{
+				trigger_error("Date of birth must be a string");
+				return;
+			}
+
+			$this->_dateOfBirth = $dateOfBirth;
+		}
+
+		public function id()
+		{
+			return $this->_id;
+		}
+
+		public function name()
+		{
+			return $this->_name;
+		}
+
+		public function email()
+		{
+			return $this->_email;
+		}
+
+		public function password()
+		{
+			return $this->_password;
+		}
+
+		public function gender()
+		{
+			return $this->_gender;
+		}
+
+		public function dateOfBirth()
+		{
+			return $this->_dateOfBirth;
+		}
 ?>

@@ -22,12 +22,14 @@ class TopicsManager
 									  		SET name = :name, 
 									  	  		description = :description, 
 									  	  		authorId = :authorId, 
-									  	  		orderId = :orderId');
+									  	  		orderId = :orderId,
+									  	  		categoryId = :categoryId');
 
 		$query->bindValue(':name', $topic->name(), PDO::PARAM_STR);
 		$query->bindValue(':description', $topic->description(), PDO::PARAM_STR);
 		$query->bindValue(':authorId', $topic->authorId(), PDO::PARAM_INT);
 		$query->bindValue(':orderId', $topic->orderId(), PDO::PARAM_INT);
+		$query->bindValue(':categoryId', $topic->categoryId(), PDO::PARAM_INT);
 		$query->execute();
 	}
 
@@ -40,6 +42,22 @@ class TopicsManager
 		
 		$data = $query->fetch(PDO::FETCH_ASSOC);
 		return new Topic($data);
+	}
+
+	public function readAllFromCategory($categoryId)
+	{
+		$categoryId = (int) $categoryId;
+		$topics = array();
+		$query = $this ->_database->query('SELECT *
+									 	   FROM topic
+									 	   WHERE categoryId = '.$categoryId.'
+									 	   ORDER BY orderId');	
+		
+		while ($data = $query->fetch(PDO::FETCH_ASSOC)) 
+		{
+			$topics[] = new Topic($data);
+		}	
+		return $topics;
 	}
 
 	public function readAll()
@@ -62,13 +80,15 @@ class TopicsManager
 											SET name = :name, 
 												description = :description, 
 											  	authorId = :authorId, 
-											  	orderId = :orderId
+											  	orderId = :orderId,
+											  	categoryId = :categoryId
 											WHERE :id = id');
 
 		$query->bindValue(':name', $topic->name(), PDO::PARAM_STR);
 		$query->bindValue(':description', $topic->description(), PDO::PARAM_STR);
 		$query->bindValue(':authorId', $topic->authorId(), PDO::PARAM_INT);
 		$query->bindValue(':orderId', $topic->orderId(), PDO::PARAM_INT);
+		$query->bindValue(':categoryId', $topic->categoryId(), PDO::PARAM_INT);
 		$query->bindValue(':id', $topic->id(), PDO::PARAM_INT);                               
 		$query->execute();
 	}

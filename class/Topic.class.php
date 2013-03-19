@@ -9,6 +9,7 @@ class Topic
 	private $_description;
 	private $_authorId;
 	private $_orderId;
+	private $_categoryId;
 
 	public function __construct(array $data) 
 	{
@@ -89,6 +90,19 @@ class Topic
 		$this->_orderId = $orderId;
 	}
 
+	public function setCategoryId($categoryId)
+	{
+		$categoryId = (int) $categoryId;
+		
+		if(!is_int($categoryId))
+		{
+			trigger_error("Category id must be an integer");
+			return;
+		}
+
+		$this->_categoryId = $categoryId;
+	}
+
 	public function id()
 	{
 		return $this->_id;
@@ -112,6 +126,11 @@ class Topic
 	public function orderId()
 	{
 		return $this->_orderId;
+	}
+
+	public function categoryId()
+	{
+		return $this->_categoryId;
 	}
 }
 

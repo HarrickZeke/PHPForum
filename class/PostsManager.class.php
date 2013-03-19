@@ -72,7 +72,7 @@ class PostsManager
 		$query->bindValue(':body', $post->body(), PDO::PARAM_STR);
 		$query->bindValue(':datetime', $post->datetime());
 		$query->bindValue(':authorId', $post->authorId(), PDO::PARAM_INT);
-		$query->bindValue(':order', $post->orderId(), PDO::PARAM_INT);
+		$query->bindValue(':orderId', $post->orderId(), PDO::PARAM_INT);
 		$query->bindValue(':id', $post->id(), PDO::PARAM_INT);                               
 		$query->execute();
 	}

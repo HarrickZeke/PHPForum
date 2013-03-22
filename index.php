@@ -1,6 +1,7 @@
 <?php
 	require_once('./include/header.php');
 	require_once('./core/autoload.php');
+	require_once('./core/config.php');
 ?>
 	<div class="large-9 columns">
 		<div class="row">
@@ -17,7 +18,7 @@
 				/**
 				 * MANAGER TEST
 				 */
-				$db = new PDO('mysql:host=127.0.0.1;dbname=forum', 'root', '');
+				$db = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASS);
 				$topic = new Topic(array('id' => 1, 'name' => "Saucisse", 'description' => "Le topic préféré des saucisses", 'authorId' => 21, 'orderId' => 45));
 				$manager = new TopicsManager($db);
 				//$manager->create($topic);

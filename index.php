@@ -18,7 +18,8 @@
 				/**
 				 * MANAGER TEST
 				 */
-				$db = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASS);
+				//$db = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASS);
+				$db = new DbConfig();
 				$topic = new Topic(array('id' => 1, 'name' => "Saucisse", 'description' => "Le topic préféré des saucisses", 'authorId' => 21, 'orderId' => 45));
 				$manager = new TopicsManager($db);
 				//$manager->create($topic);

@@ -1,7 +1,6 @@
 <?php
 	require_once('./include/header.php');
 	require_once('./core/autoload.php');
-	require_once('./core/config.php');
 
 	$post_id = mysql_real_escape_string($_GET["post_id"]);
 	$post_id = (int) $post_id;
@@ -23,7 +22,7 @@
 	<!-- This has been source ordered to come first in the markup (and on small devices) but to be to the right of the nav on larger screens -->
 	<div class="large-12 columns">
 		<?php	
-	 	$db = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASS);
+	 	$db = new DbConfig();
 		
 	 	$manager_topic = new TopicsManager($db);
 		$topic = $manager_topic->read($post_id);

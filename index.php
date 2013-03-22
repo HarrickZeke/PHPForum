@@ -1,7 +1,6 @@
 <?php
 	require_once('./include/header.php');
 	require_once('./core/autoload.php');
-	require_once('./core/config.php');
 ?>
 	<div class="large-9 columns">
 		<div class="row">

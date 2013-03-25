@@ -11,7 +11,7 @@
 		private $_gender;
 		private $_dateOfBirth;
 
-		function __construct(argument)
+		function __construct(array $data)
 		{
 			$this->hydrate($data);
 		}

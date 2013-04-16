@@ -1,0 +1,12 @@
+{
+    "name": "dev/php-poo-forum",
+    "require": {
+        "symfony/routing": "2.1.*@dev"
+    },
+    "authors": [
+        {
+            "name": "HarrickZeke",
+            "email": "harrick.zeke@gmail.com"
+        }
+    ]
+}

@@ -1,7 +1,7 @@
 {
     "name": "dev/php-poo-forum",
     "require": {
-        "symfony/routing": "2.1.*@dev"
+        "silex/silex": "1.0.*@dev"
     },
     "authors": [
         {
